@@ -6,6 +6,7 @@ sh update.sh
 sudo apt install mysql-server
 sudo systemctl start mysql.service
 
+
 while : ; do
     stty -echo
     echo "Enter a password for your mysql root user:"
@@ -34,16 +35,21 @@ case "$create_non_root_user" in
     while : ; do
         stty -echo
         echo "Enter a password for your mysql root user:"
-        read mysql_new_user_password
+        read mysql_custom_user_password
         echo "Re-enter the password for your mysql root user:"
-        read mysql_new_user_password_confirmation
+        read mysql_custom_user_password_confirmation
         stty echo
-        if [ $mysql_new_user_password != $mysql_new_user_password_confirmation ]
+        if [ $mysql_custom_user_password != $mysql_custom_user_password_confirmation ]
         then
             echo "Passwords do not match"
             sleep 1
             clear
         else
+            sudo mysql -e "CREATE USER '$database_user_username'@'localhost' IDENTIFIED WITH caching_sha2_password BY '$mysql_custom_user_password';"
+            # Set users permissions to essentially be a root user
+            sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO '$database_user_username'@'localhost' WITH GRANT OPTION";
+            clear
+            echo "Get your .sql file for your dbs ready and put it into the data folder"
             break
         fi
     done

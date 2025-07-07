@@ -43,4 +43,17 @@ else
     cp -R $personal_files_dir $data_dir/
 fi
 
-tar -cvzf server-migration-snapshot.tar.gz ./data
+# SSH Keys & bash config
+cp /home/itzaver/.ssh/authorized_keys $data_dir/
+cp /home/itzaver/.bashrc $data_dir/
+
+# Move the MOTD (Message of the day) / Login banner. Which is displayed at every login, but also backup the logon banner which is displayed before the users password is entered
+
+# Login Banner
+cp /srv/logon-banner.txt $data_dir/
+
+# Login attempt prompt/ banner
+cp /etc/motd $data_dir/
+
+# Compress the data (Everything that is in that folder)
+tar -cvzf server-migration-snapshot.tar.gz ./data/*

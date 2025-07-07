@@ -10,6 +10,12 @@ echo "5: Update and Upgrade packages (Recommended to run before any of the other
 echo "6: Setup & Install All of the above"
 read stage
 
+# Extract the data from export if the export exists
+if [ -e ./server-migration-snapshot.tar.gz ]; then
+    rm -rf ./data/
+    tar -xvzf server-migration-snapshot.tar.gz -C ./data/
+fi
+
 case "$stage" in
     1)
         sh ./setup/apache.sh
