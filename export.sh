@@ -16,6 +16,6 @@ sudo cp -R /$apache_dir/sites-available/ $export_dir/
 
 sudo cp /home/itzaver/.bashrc $export_dir/
 
-echo "Now go to your phpmyadmin page and export all database tables except the phpmyadmin database. Click after you have done this"
+echo "Now go to your phpmyadmin page and export all database tables except the phpmyadmin database. Press the enter key after you have done this"
 
 read temp
