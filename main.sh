@@ -1,14 +1,13 @@
 #!bin/bash
 
 echo "Choose an operation you want to execute: "
+echo "0: Export data and prepare for migration to a new server"
 echo "1: Install & Setup Apache Web Server"
 echo "2: Install & Setup PhpMyAdmin"
 echo "3: Install & Setup MySQL Sever"
 echo "4: Install & Setup Certbot SSL Certificate Manager"
 echo "5: Update and Upgrade packages (Recommended to run before any of the other options)"
 echo "6: Setup & Install All of the above"
-echo "7: Export data and prepare for migration to a new server"
-
 read stage
 
 case "$stage" in
@@ -34,7 +33,7 @@ case "$stage" in
         sh ./setup/phpmyadmin.sh
         sh ./setup/certbot.sh
         ;;
-    7)
+    0)
         sh export.sh
         ;;
 
