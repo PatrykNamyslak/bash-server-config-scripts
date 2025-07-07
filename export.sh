@@ -42,3 +42,5 @@ if [ ! -d $personal_files_dir ]; then
 else
     cp -R $personal_files_dir $data_dir/
 fi
+
+tar -cvzf server-migration-snapshot.tar.gz ./data
