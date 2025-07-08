@@ -86,5 +86,14 @@ sudo tar -cvzf server-migration-snapshot.tar.gz ./data/*
 if [ -f server-migration-snapshot.tar.gz ]; then
     echo "Export complete."
     echo "Please now copy this ($PWD) entire folder to your new server and run the import script"
-    # sudo rm -rf ./data/*
+    echo ""
+    echo "Would you like to move the files using rsync?"
+    read rsync_transfer
+    case "$rsync_transfer" in
+        Y|y)
+            echo ""
+            echo "Where would you like to send the files? (IP): "
+            read destination_ip
+            sudo rsync -avz -e "ssh" $PWD itzaver@$destination_ip:/srv/bash-server-config-scripts/
+            ;;
 fi
