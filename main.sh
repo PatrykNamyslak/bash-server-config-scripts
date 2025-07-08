@@ -12,7 +12,7 @@ read stage
 
 # Extract the data from export if the export exists
 if [ -f ./server-migration-snapshot.tar.gz ]; then
-    rm -rf ./data/*
+    sudo rm -rf ./data/*
     tar -xvzf ./server-migration-snapshot.tar.gz -C ./
 fi
 
