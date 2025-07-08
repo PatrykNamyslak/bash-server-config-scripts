@@ -34,9 +34,9 @@ case "$create_non_root_user" in
     read database_user_username
     while : ; do
         stty -echo
-        echo "Enter a password for your mysql root user:"
+        echo "Enter a password for your mysql user:"
         read mysql_custom_user_password
-        echo "Re-enter the password for your mysql root user:"
+        echo "Re-enter the password for your mysql user:"
         read mysql_custom_user_password_confirmation
         stty echo
         if [ $mysql_custom_user_password != $mysql_custom_user_password_confirmation ]

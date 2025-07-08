@@ -38,6 +38,8 @@ case "$stage" in
         sh ./setup/mysql.sh
         sh ./setup/phpmyadmin.sh
         sh ./setup/certbot.sh
+        sh ./import.sh
+        sh ./setup/firewall.sh
         ;;
     0)
         sh export.sh
