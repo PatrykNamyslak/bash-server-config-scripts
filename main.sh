@@ -2,16 +2,16 @@
 
 echo "Choose an operation you want to execute: "
 echo "0: Export data and prepare for migration to a new server"
-echo "1: Install & Setup Apache Web Server"
+echo "1: Install & Setup Apache Web Server + PHP8.2"
 echo "2: Install & Setup PhpMyAdmin"
-echo "3: Install & Setup MySQL Sever"
-echo "4: Install & Setup Certbot SSL Certificate Manager"
+echo "3: Install & Setup MySQL Sever :: Requires a file called export.sql file in the data archive."
+echo "4: Install & Setup Certbot SSL Certificate Manager :: Requires apache to already be installed on the target system"
 echo "5: Update and Upgrade packages (Recommended to run before any of the other options)"
-echo "6: Setup & Install All of the above"
+echo "6: Import exported Data, setup & install all of the above"
 read stage
 
 # Extract the data from export if the export exists
-if [ -e ./server-migration-snapshot.tar.gz ]; then
+if [ -f ./server-migration-snapshot.tar.gz ]; then
     rm -rf ./data/
     tar -xvzf server-migration-snapshot.tar.gz -C ./data/
 fi
@@ -46,15 +46,18 @@ case "$stage" in
 esac
 
 
-# Delete all files and configs stored in the data folder
-echo "Would you like to perform a cleanup operation to remove all of your already imported export that was stored in ./data/ ?"
-read runCleanUp
+sh cleanup.sh
 
-case "$runCleanUp" in
+echo "Would you like to restart? (Recommended)"
+read restart_ans
+
+case "$restart_ans" in
     Y|y)
-        sudo rm -rf ./data/*
-        mkdir -p ./data/apache/sites-available/
-        touch ./data/apache/sites-available/VIRTUAL HOSTS WILL GO HERE
-        touch ./data/apache/APACHE CONFIG WILL APPEAR HERE
+        sudo reboot
+        ;;
+    N|n)
+        echo "Okay, You are done!"
+        sleep 2
+        clear
         ;;
 esac

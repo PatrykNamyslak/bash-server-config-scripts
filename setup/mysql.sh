@@ -49,13 +49,17 @@ case "$create_non_root_user" in
             # Set users permissions to essentially be a root user
             sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO '$database_user_username'@'localhost' WITH GRANT OPTION";
             clear
-            echo "Get your .sql file for your dbs ready and put it into the data folder"
             break
         fi
     done
     ;;
-    "N"|"n")
-    ;;
 esac
 
+if [ -f ./data/export.sql ]; then
+    # Import SQL Data
+    mysql -u $database_user_username -p < ./data/export.sql
+    echo "Databases Imported"
+else
+    echo "There is no file to import."
+fi
 
