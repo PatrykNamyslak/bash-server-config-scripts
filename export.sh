@@ -84,22 +84,22 @@ sudo cp /srv/logon-banner.txt $data_dir/
 # Login attempt prompt/ banner
 sudo cp /etc/motd $data_dir/
 
-# Compress the data (Everything that is in that folder)
 
-sudo tar -cvzf server-migration-snapshot.tar.gz $data_dir/*
 
-if [ -f server-migration-snapshot.tar.gz ]; then
-    echo "Export complete."
-    echo "Please now copy this ($PWD) entire folder to your new server and run the import script"
-    echo ""
-    echo "Would you like to move the files using rsync?"
-    read rsync_transfer
-    case "$rsync_transfer" in
-        Y|y)
-            echo ""
-            echo "Where would you like to send the files? (IP): "
-            read destination_ip
-            sudo rsync -avz -e "ssh" $PWD itzaver@$destination_ip:/srv/bash-server-config-scripts/
-            ;;
-    esac
-fi
+echo "Would you like to move the files using rsync?"
+read rsync_transfer
+case "$rsync_transfer" in
+    Y|y)
+        echo ""
+        echo "Where would you like to send the files? (IP): "
+        read destination_ip
+        sudo rsync -avz -e "ssh" $PWD itzaver@$destination_ip:/srv/bash-server-config-scripts/
+        ;;
+esac
+
+# if [ -f server-migration-snapshot.tar.gz ]; then
+#     echo "Export complete."
+#     echo "Please now copy this ($PWD) entire folder to your new server and run the import script"
+#     echo ""
+    
+# fi

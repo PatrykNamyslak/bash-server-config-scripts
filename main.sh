@@ -10,11 +10,6 @@ echo "5: Update and Upgrade packages (Recommended to run before any of the other
 echo "6: Import exported Data, setup & install all of the above"
 read stage
 
-# Extract the data from export if the export exists
-if [ -f ./server-migration-snapshot.tar.gz ]; then
-    sudo rm -rf ./data/*
-    tar -xvzf ./server-migration-snapshot.tar.gz -C ./data/
-fi
 
 case "$stage" in
     1)
@@ -40,6 +35,7 @@ case "$stage" in
         sh ./setup/certbot.sh
         sh ./import.sh
         sh ./setup/firewall.sh
+        sudo rm -rf ./server-migration-snapshot.tar.gz
         ;;
     0)
         sh export.sh
