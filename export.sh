@@ -93,7 +93,7 @@ case "$rsync_transfer" in
         echo ""
         echo "Where would you like to send the files? (IP): "
         read destination_ip
-        sudo rsync -avz -e "ssh" $PWD itzaver@$destination_ip:/srv/bash-server-config-scripts/
+        sudo rsync -avz -e "ssh" $PWD itzaver@$destination_ip:/srv/
         ;;
 esac
 
