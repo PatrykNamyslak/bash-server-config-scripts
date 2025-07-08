@@ -22,7 +22,7 @@ sudo cp ./data/apache/apache.conf /etc/apache2/apache2.conf
 sudo cp ./data/apache/sites-available/ /etc/apache2/
 # Cleanup virtual hosts and remove any ssl certificate residue
 sudo rm -rf /etc/apache2/*-le-ssl*
-sudo sh fix-virtual-hosts.sh
+sudo sh ./setup/fix-virtual-hosts.sh
 # Restart apache
 sudo service apache2 reload
 sudo service apache2 restart
