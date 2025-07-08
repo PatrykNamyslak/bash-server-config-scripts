@@ -41,6 +41,7 @@ case "$stage" in
         ;;
     0)
         sh export.sh
+        exit 0
         ;;
 
 esac

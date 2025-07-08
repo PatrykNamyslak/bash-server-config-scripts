@@ -4,7 +4,7 @@ apache_dir="etc/apache2"
 websites_dir="/srv/websites/"
 archives_dir="/srv/archives/"
 personal_files_dir="/srv/files/"
-
+saved_commands_dir="/srv/commands/"
 data_dir="./data"
 
 if [ ! -d $data_dir ]; then
@@ -53,12 +53,20 @@ else
     sudo cp -R $archives_dir $data_dir/
 fi
 
-# Files
+# Personal Files
 if [ ! -d $personal_files_dir ]; then
     echo "Personal Files Directory does not exist - No export conducted"
 else
     sudo cp -R $personal_files_dir $data_dir/
 fi
+
+# Saved Commands
+if [ ! -d $saved_commands_dir ]; then
+    echo "Saved Commands Directory does not exist - No export conducted"
+else
+    sudo cp -R $saved_commands_dir $data_dir/
+fi
+
 
 # SSH Keys & bash config
 sudo cp /home/itzaver/.ssh/authorized_keys $data_dir/
