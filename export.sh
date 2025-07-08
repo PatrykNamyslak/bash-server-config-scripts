@@ -5,7 +5,7 @@ websites_dir="/srv/websites/"
 archives_dir="/srv/archives/"
 personal_files_dir="/srv/files/"
 
-data_dir = "./data"
+data_dir="./data"
 
 if [ ! -d $data_dir ]; then
     sh ./cleanup.sh
