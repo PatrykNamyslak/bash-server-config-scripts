@@ -96,4 +96,5 @@ if [ -f server-migration-snapshot.tar.gz ]; then
             read destination_ip
             sudo rsync -avz -e "ssh" $PWD itzaver@$destination_ip:/srv/bash-server-config-scripts/
             ;;
+    esac
 fi
