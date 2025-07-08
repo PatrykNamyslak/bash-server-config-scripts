@@ -1,7 +1,7 @@
 #!bin/bash
 
 # Update the system
-sh update.sh
+sh ./setup/update.sh
 # Install and Enable apache
 sudo apt install apache2 -y
 sudo service apache2 start

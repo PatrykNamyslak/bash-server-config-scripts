@@ -1,7 +1,7 @@
 #!bin/bash
 
 # Update the system
-sh update.sh
+sh ./setup/update.sh
 
 sudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl -y
 
