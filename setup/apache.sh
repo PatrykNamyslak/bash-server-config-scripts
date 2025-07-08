@@ -17,9 +17,6 @@ a2enmod rewrite
 # Install php 8.2 as that is what is needed for phpmyadmin
 sudo apt-get install php8.2 -y
 
-# Import apache data
-sudo cp ./data/apache/apache.conf /etc/apache2/apache2.conf
-sudo cp ./data/apache/sites-available/ /etc/apache2/
 # Cleanup virtual hosts and remove any ssl certificate residue
 sudo rm -rf /etc/apache2/*-le-ssl*
 sudo sh ./setup/fix-virtual-hosts.sh
