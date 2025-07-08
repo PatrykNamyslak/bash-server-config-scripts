@@ -32,7 +32,7 @@ case "$automatic_export" in
     Y|y)
         mysqldump -u $mysql_username -p --all-databases > ./data/export.sql
         if [ -f ./data/export.sql ]; then
-            echo "Databases successfully exported!"#
+            echo "Databases successfully exported!"
         else
             echo "Database export Failed"
         fi
