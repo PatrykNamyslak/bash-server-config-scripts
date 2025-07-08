@@ -8,7 +8,7 @@ sudo ufw --force reset
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 
-# Allow SSH and SFTP (SFTP uses SSH)
+# Allow SSH and SFTP
 sudo ufw allow OpenSSH
 sudo ufw allow 22
 
