@@ -86,7 +86,7 @@ sudo cp /etc/motd $data_dir/
 
 # Compress the data (Everything that is in that folder)
 
-sudo tar -cvzf server-migration-snapshot.tar.gz -C $data_dir/ *
+sudo tar -cvzf server-migration-snapshot.tar.gz $data_dir/*
 
 if [ -f server-migration-snapshot.tar.gz ]; then
     echo "Export complete."
