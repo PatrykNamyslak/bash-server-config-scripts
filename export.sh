@@ -17,7 +17,7 @@ read mysql_username
 
 # Move all virtual host configuration files from the apache folder into the export folder
 sudo cp -R /$apache_dir/sites-available/ $data_dir/apache/
-sudo cp -R /$apache_dir/apache.conf $data_dir/apache/
+sudo cp -R /$apache_dir/apache2.conf $data_dir/apache/
 
 
 # Copying bash config with aliases
