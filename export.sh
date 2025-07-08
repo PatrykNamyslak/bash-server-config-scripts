@@ -86,5 +86,5 @@ sudo tar -cvzf server-migration-snapshot.tar.gz ./data/*
 if [ -f server-migration-snapshot.tar.gz ]; then
     echo "Export complete."
     echo "Please now copy this ($PWD) entire folder to your new server and run the import script"
-    sudo rm -rf ./data/*
+    # sudo rm -rf ./data/*
 fi
