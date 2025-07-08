@@ -45,8 +45,14 @@ case "$stage" in
 
 esac
 
+echo "Would you like to perform a cleanup operation to remove all of your already imported export that was stored in ./data/ ?"
+read runCleanUp
+case "$runCleanUp" in
+    Y|y)
+        sh cleanup.sh
+        ;;
+esac
 
-sh cleanup.sh
 
 echo "Would you like to restart? (Recommended)"
 read restart_ans

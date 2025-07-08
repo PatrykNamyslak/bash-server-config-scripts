@@ -3,7 +3,7 @@
 # Update the system
 sh update.sh
 
-sudo apt install mysql-server
+sudo apt install mysql-server -y
 sudo systemctl start mysql.service
 
 
@@ -25,7 +25,7 @@ while : ; do
 done
 
 sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$mysql_password';"
-mysql_secure_installation
+# mysql_secure_installation
 echo "Would you like to create a non root user to access your database with all permissions?: Y|y/N|n"
 read create_non_root_user
 case "$create_non_root_user" in

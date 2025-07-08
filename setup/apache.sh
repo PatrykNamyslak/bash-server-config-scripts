@@ -15,7 +15,7 @@ sudo systemctl restart apache2
 a2enmod rewrite
 
 # Install php 8.2 as that is what is needed for phpmyadmin
-sudo apt-get install php8.2
+sudo apt-get install php8.2 -y
 
 # Import apache data
 sudo cp ./data/apache/apache.conf /etc/apache2/apache2.conf

@@ -8,9 +8,12 @@ personal_files_dir = "/srv/files/"
 data_dir = "./data"
 
 if [ ! -d $data_dir ]; then
-
+    sh ./cleanup.sh
 fi
 
+# Get the username of the user that has the appropriate perms
+echo "Enter your mysql username that has the required permissions to export all of the databases"
+read mysql_username
 
 # Move all virtual host configuration files from the apache folder into the export folder
 sudo cp -R /$apache_dir/sites-available/ $data_dir/apache/
@@ -27,7 +30,7 @@ read automatic_export
 
 case "$automatic_export" in
     Y|y)
-        mysqldump -u itzaver -p --all-databases > ./data/export.sql
+        mysqldump -u $mysql_username -p --all-databases > ./data/export.sql
         echo "Databases successfully exported!"
         ;;
     N|n)

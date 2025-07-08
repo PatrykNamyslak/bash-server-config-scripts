@@ -3,7 +3,7 @@
 # Update the system
 sh update.sh
 
-sudo apt install certbot python3-certbot-apache
+sudo apt install certbot python3-certbot-apache -y
 sudo systemctl reload apache2
 
 # Start ssl certificate generation
