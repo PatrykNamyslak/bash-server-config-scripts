@@ -31,7 +31,11 @@ read automatic_export
 case "$automatic_export" in
     Y|y)
         mysqldump -u $mysql_username -p --all-databases > ./data/export.sql
-        echo "Databases successfully exported!"
+        if [ -f ./data/export.sql ]; then
+            echo "Databases successfully exported!"#
+        else
+            echo "Database export Failed"
+        fi
         ;;
     N|n)
         echo "Then go to your phpmyadmin page and export all database tables except the phpmyadmin database and place the .sql file in the data directory. Press the ENTER/RETURN key after you have done this"
@@ -82,7 +86,7 @@ sudo cp /etc/motd $data_dir/
 
 # Compress the data (Everything that is in that folder)
 cd ./data/
-sudo tar -cvzf ../server-migration-snapshot.tar.gz .
+sudo tar -cvzf ../server-migration-snapshot.tar.gz ./*
 cd -
 
 if [ -f server-migration-snapshot.tar.gz ]; then
