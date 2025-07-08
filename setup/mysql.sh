@@ -47,7 +47,7 @@ case "$create_non_root_user" in
         else
             sudo mysql -e "CREATE USER '$database_user_username'@'localhost' IDENTIFIED WITH caching_sha2_password BY '$mysql_custom_user_password';"
             # Set users permissions to essentially be a root user
-            sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO '$database_user_username'@'localhost' WITH GRANT OPTION";
+            sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO '$database_user_username'@'localhost' WITH GRANT OPTION;";
             clear
             break
         fi

@@ -1,4 +1,8 @@
 #!bin/bash
+echo "You need to fix this mate"
+exit 0
+
+
 
 echo "Choose an operation you want to execute: "
 echo "0: Export data and prepare for migration to a new server"
@@ -35,7 +39,15 @@ case "$stage" in
         sh ./setup/certbot.sh
         sh ./import.sh
         sh ./setup/firewall.sh
-        sudo rm -rf ./server-migration-snapshot.tar.gz
+        # Cleanup virtual hosts and remove any ssl certificate residue
+        sudo rm -rf /etc/apache2/*-le-ssl*
+        sudo sh ./setup/fix-virtual-hosts.sh
+        sh ./setup/php.sh
+        sudo a2ensite /etc/apache2/sites-available/*
+        sudo a2enmod rewrite
+        # Restart apache
+        sudo service apache2 reload
+        sudo service apache2 restart
         ;;
     0)
         sh export.sh
