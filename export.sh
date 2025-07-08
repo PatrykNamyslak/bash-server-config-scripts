@@ -85,9 +85,7 @@ sudo cp /srv/logon-banner.txt $data_dir/
 sudo cp /etc/motd $data_dir/
 
 # Compress the data (Everything that is in that folder)
-cd ./data/
-sudo tar -cvzf ../server-migration-snapshot.tar.gz ./*
-cd -
+sudo tar -cvzf ./server-migration-snapshot.tar.gz ./data/
 
 if [ -f server-migration-snapshot.tar.gz ]; then
     echo "Export complete."
