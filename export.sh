@@ -1,9 +1,9 @@
 #!bin/bash
 
-apache_dir = "etc/apache2"
-websites_dir = "/srv/websites/"
-archives_dir = "/srv/archives/"
-personal_files_dir = "/srv/files/"
+apache_dir="etc/apache2"
+websites_dir="/srv/websites/"
+archives_dir="/srv/archives/"
+personal_files_dir="/srv/files/"
 
 data_dir = "./data"
 
